@@ -9,6 +9,7 @@ namespace FurnitureInStock
     class Genotype
     {
         private int numberOfFurniture;
+
         private List<int> genotype;
 
         private Random randomCount;
