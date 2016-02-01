@@ -14,28 +14,28 @@ namespace FurnitureInStock
 
         private Random randomCount;
 
-        private int minCountOfOneKindOfFurniture;
+        private int maxCountOfOneKindOfFurniture;
 
-        public Genotype(int _numberOfFurniture,int _minCountOfOneKindOfFurniture)
+        public Genotype(int _numberOfFurniture,int _maxCountOfOneKindOfFurniture)
         {
             numberOfFurniture = _numberOfFurniture;
             genotype = new List<int>();
             randomCount = new Random();
-            _minCountOfOneKindOfFurniture = minCountOfOneKindOfFurniture;
+            this.maxCountOfOneKindOfFurniture = _maxCountOfOneKindOfFurniture;
         }
 
         public List<int> FormRandomGenotype()
         {
             for(int indexOfFurniture=0; indexOfFurniture< numberOfFurniture; indexOfFurniture++)
             {
-                genotype.Add(randomCount.Next(0, minCountOfOneKindOfFurniture));
+                genotype.Add(randomCount.Next(0, maxCountOfOneKindOfFurniture+1));
             }
             return genotype;
         }
 
         public Phenotype GenotypeToPhenotype()
         {
-            Phenotype phenotype = new Phenotype(numberOfFurniture, minCountOfOneKindOfFurniture);
+            Phenotype phenotype = new Phenotype(numberOfFurniture, maxCountOfOneKindOfFurniture+1);
             int[,] matrixOfPhenotype = phenotype.getPhenotype();
             for (int allele=0; allele<genotype.Count;allele++)
             {

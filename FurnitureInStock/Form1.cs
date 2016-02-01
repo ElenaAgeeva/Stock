@@ -16,5 +16,11 @@ namespace FurnitureInStock
         {
             InitializeComponent();
         }
+
+        private void SolveWithGeneticAlgorithm_Click(object sender, EventArgs e)
+        {
+            Population population = new Population(20, 7, 2);
+            population.FormInitialPopulation();
+        }
     }
 }

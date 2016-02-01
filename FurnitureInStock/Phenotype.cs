@@ -16,8 +16,8 @@ namespace FurnitureInStock
 
         public Phenotype(int _numberOfFurniture,int _minCountOfOneKindOfFurniture)
         {
-            _numberOfFurniture = numberOfFurniture;
-            _minCountOfOneKindOfFurniture = minCountOfOneKindOfFurniture;
+            numberOfFurniture = _numberOfFurniture;
+            minCountOfOneKindOfFurniture = _minCountOfOneKindOfFurniture;
             phenotype = new int[numberOfFurniture,minCountOfOneKindOfFurniture];
         }
 
