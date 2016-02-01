@@ -18,10 +18,13 @@ namespace FurnitureInStock
 
         private int maxCountOfOneKindOfFurniture;
 
-        public Individual(int _numberOfFurniture, int _maxCountOfOneKindOfFurniture)
+        private List<AdditionalInformation> additionalInformationAboutIndividual;
+
+        public Individual(int _numberOfFurniture, int _maxCountOfOneKindOfFurniture, List<AdditionalInformation> _additionalInformationAboutIndividual)
         {
             numberOfFurniture = _numberOfFurniture;
             maxCountOfOneKindOfFurniture = _maxCountOfOneKindOfFurniture;
+            additionalInformationAboutIndividual = _additionalInformationAboutIndividual;
             genotypeOfIndividual = new Genotype(numberOfFurniture, maxCountOfOneKindOfFurniture);
             individual = genotypeOfIndividual.FormRandomGenotype();
             phenotypeOfIndividual = genotypeOfIndividual.GenotypeToPhenotype();
