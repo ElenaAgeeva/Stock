@@ -55,5 +55,10 @@ namespace FurnitureInStock
                 counter++;
             }
         }
+
+        public List<Individual> getInitialPopulation()
+        {
+            return InitialPopulation;
+        }
     }
 }

@@ -54,5 +54,15 @@ namespace FurnitureInStock
                     additionalInformationAboutIndividual[i].getManufacturingCosts());
             }
         }
+
+        public double getSCommon()
+        {
+            return SCommon;
+        }
+
+        public double getPCommon()
+        {
+            return PCommon;
+        }
     }
 }
