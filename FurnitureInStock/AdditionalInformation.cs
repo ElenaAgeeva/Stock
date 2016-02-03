@@ -22,8 +22,11 @@ namespace FurnitureInStock
 
         private double consumptionDueToTheLackOfStocks;
 
+        private double volumeOfFurniture;
+
         public AdditionalInformation(double _theProbabilityOfSellingTheFurniture, double _profitsFromTheSaleOf,double _storageCosts,
-            double _manufacturingCosts, double _accommodationCosts, double _maintenanceCosts,double _consumptionDueToTheLackOfStocks)
+            double _manufacturingCosts, double _accommodationCosts, double _maintenanceCosts,double _consumptionDueToTheLackOfStocks,
+            double _volumeOfFurniture)
         {
             theProbabilityOfSellingTheFurniture = _theProbabilityOfSellingTheFurniture;
             profitsFromTheSaleOf = _profitsFromTheSaleOf;
@@ -32,6 +35,12 @@ namespace FurnitureInStock
             accommodationCosts = _accommodationCosts;
             maintenanceCosts = _maintenanceCosts;
             consumptionDueToTheLackOfStocks = _consumptionDueToTheLackOfStocks;
+            volumeOfFurniture = _volumeOfFurniture;
+        }
+
+        public double getVolumeOfFurniture()
+        {
+            return volumeOfFurniture;
         }
 
         public double getTheProbabilityOfSellingTheFurniture()

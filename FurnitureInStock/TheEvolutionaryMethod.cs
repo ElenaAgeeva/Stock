@@ -20,6 +20,7 @@ namespace FurnitureInStock
             minCountOfOneKindOfFurniture = _minCountOfOneKindOfFurniture;
         }
 
+        
         /*public void GenerationInitialPopulation(int countOfPopulation)
         {
             for (int indexOfGenotype=0; indexOfGenotype< countOfPopulation; countOfPopulation++)

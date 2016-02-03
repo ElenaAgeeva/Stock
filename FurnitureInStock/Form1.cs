@@ -19,33 +19,21 @@ namespace FurnitureInStock
 
         private void SolveWithGeneticAlgorithm_Click(object sender, EventArgs e)
         {
-            Population population = new Population(5, 7, 2);
+            Population population = new Population(5, 7, 2,15,1000);
             population.FormInitialPopulation();
             List<Individual> initialPopulation = population.getInitialPopulation();
-            List<SetOfNonDominatedOptions> setOfNonDominatedOptions = new List<SetOfNonDominatedOptions>();
-            SetOfNonDominatedOptions r = new SetOfNonDominatedOptions();
-            List<Individual> IntermediaryPopulation = new List<Individual>();
-            IntermediaryPopulation = r.findSetOfDominatedOptions(initialPopulation);
-            setOfNonDominatedOptions.Add(r);
-            while ((IntermediaryPopulation).Count!=0)
+            initialPopulation = population.FindFitnessAssessment(initialPopulation);
+            
+            do
             {
-                SetOfNonDominatedOptions nonDominated = new SetOfNonDominatedOptions();
-                IntermediaryPopulation=nonDominated.findSetOfDominatedOptions(IntermediaryPopulation);
-                setOfNonDominatedOptions.Add(nonDominated);
+                Selection selection = new Selection(initialPopulation.Count);
+                selection.tournament(initialPopulation, 3);
+                crossover crossov = new crossover();
+                crossov.cross(initialPopulation, 0.3);
+                mutation mt = new mutation();
+                mt.mutatio(initialPopulation, 0.1);
             }
-            List<Individual> populationToSelection = new List<Individual>();
-            for (int i=0; i<setOfNonDominatedOptions.Count;i++)
-            {
-                setOfNonDominatedOptions[i].setRang(setOfNonDominatedOptions.Count - i);
-                setOfNonDominatedOptions[i].AssessmentOfFitness();
-                setOfNonDominatedOptions[i].getNonDominated().ForEach(x => populationToSelection.Add(x));
-            }
-            Selection selection = new Selection(initialPopulation.Count);
-            selection.tournament(populationToSelection, 3);
-            crossover crossov = new crossover();
-            crossov.cross(populationToSelection,0.3);
-            mutation mt = new mutation();
-            mt.mutatio(populationToSelection, 0.1);   
+            while (population.checkOldAndNewCommonNonDominatedOptions(commonNonDominated,population.getCommonNonDominatedOptions()));   
         }
     }
 }

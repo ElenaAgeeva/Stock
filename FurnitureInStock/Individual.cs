@@ -30,14 +30,25 @@ namespace FurnitureInStock
 
         private Random randomCount;
 
-        public Individual(int _numberOfFurniture, int _maxCountOfOneKindOfFurniture, List<AdditionalInformation> _additionalInformationAboutIndividual,Random _randomCount)
+        private double maxVolume;
+
+        private double maxCost;
+
+        public Individual(int _numberOfFurniture, int _maxCountOfOneKindOfFurniture,
+            List<AdditionalInformation> _additionalInformationAboutIndividual,Random _randomCount,double _maxVolume,double _maxCost)
         {
             numberOfFurniture = _numberOfFurniture;
             maxCountOfOneKindOfFurniture = _maxCountOfOneKindOfFurniture;
             additionalInformationAboutIndividual = _additionalInformationAboutIndividual;
             randomCount = _randomCount;
-            genotypeOfIndividual = new Genotype(numberOfFurniture, maxCountOfOneKindOfFurniture,randomCount);
-            individual = genotypeOfIndividual.FormRandomGenotype();
+            maxVolume = _maxVolume;
+            maxCost = _maxCost;
+            do
+            {
+                genotypeOfIndividual = new Genotype(numberOfFurniture, maxCountOfOneKindOfFurniture, randomCount);
+                individual = genotypeOfIndividual.FormRandomGenotype();
+            }
+            while (checkForAllowabilityInVolume() || checkForAllowabilityInCost());
             phenotypeOfIndividual = genotypeOfIndividual.GenotypeToPhenotype();
             CountPCommon();
             CountSCommon();
@@ -100,6 +111,26 @@ namespace FurnitureInStock
         public void setIndividual(List<int> _individual)
         {
             individual=_individual;
+        }
+
+        public bool checkForAllowabilityInVolume()
+        {
+            double volume = 0;
+            for (int i = 0; i < individual.Count; i++)
+            {
+                volume += individual[i] * additionalInformationAboutIndividual[i].getVolumeOfFurniture();
+            }
+            return volume > maxVolume;
+        }
+
+        public bool checkForAllowabilityInCost()
+        {
+            double cost = 0;
+            for (int i = 0; i < individual.Count; i++)
+            {
+                cost += individual[i] * additionalInformationAboutIndividual[i].getStorageCosts();
+            }
+            return cost > maxCost;
         }
     }
 }
