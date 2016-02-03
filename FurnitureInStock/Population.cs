@@ -86,6 +86,7 @@ namespace FurnitureInStock
             {
                 List<SetOfNonDominatedOptions> setOfNonDominatedOptions = new List<SetOfNonDominatedOptions>();
                 List<Individual> IntermediaryPopulation = new List<Individual>();
+                IntermediaryPopulation.AddRange(withoutFitnessAssessment.AsEnumerable());
                 do
                 {
                     SetOfNonDominatedOptions nonDominated = new SetOfNonDominatedOptions();
@@ -102,7 +103,7 @@ namespace FurnitureInStock
                 }
                 if (setOfNonDominatedOptions.Count != 0)
                 {
-                    commonNonDominatedOptions.Clear();
+                    commonNonDominatedOptions = new List<Individual>();
                     setOfNonDominatedOptions[0].getNonDominated().ForEach(x => commonNonDominatedOptions.Add(x));
                 }
                 return withFitnessAssessment;
@@ -126,7 +127,11 @@ namespace FurnitureInStock
             if (checkOldAndNewCommonNonDominatedOptions())
                 nonImprovement++;
             else
+            {
                 nonImprovement = 0;
+                commonNonDominatedOld.Clear();
+                commonNonDominatedOld.AddRange(commonNonDominatedOptions.AsEnumerable());
+            }
             return maxNonImprovement < nonImprovement;
         }
     }

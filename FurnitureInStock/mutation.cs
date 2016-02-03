@@ -8,7 +8,7 @@ namespace FurnitureInStock
 {
     class mutation
     {
-        public List<Individual> mutatio(List<Individual> ch, double probability)
+        public static List<Individual> mutatio(List<Individual> ch, double probability)
         {
             List<Individual> newch = new List<Individual>();
             int j = 0;
@@ -26,14 +26,18 @@ namespace FurnitureInStock
             {
                 Random rand = new Random();
                 int index_of_ch = rand.Next(0, newch.Count);
-                List<Individual> lis = new List<Individual>();
-                ch.Add(simple(newch[index_of_ch]));
+                Individual individ = simple(newch[index_of_ch]);
+                while (individ.checkForAllowabilityInVolume() || individ.checkForAllowabilityInCost())
+                {
+                    individ.changeSomethingLittle();
+                }
+                ch.Add(individ);
                 newch.Remove(newch[index_of_ch]);
             }
             return ch;
         }
 
-        private Individual simple(Individual individual)
+        private static Individual simple(Individual individual)
         {
             int[] a = individual.getIndividual().ToArray();
             if (a.Length > 1)
@@ -45,7 +49,6 @@ namespace FurnitureInStock
                 int ct = c[point];
                 c[point] = c[point - 1];
                 c[point - 1] = ct;
-                //надо проверить на выполнение ограничений
                 individual.setIndividual(c.ToList());
                 return individual;
             }

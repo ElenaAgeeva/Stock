@@ -113,6 +113,13 @@ namespace FurnitureInStock
             individual=_individual;
         }
 
+        public void changeSomethingLittle()
+        {
+            int allele = randomCount.Next(0, maxCountOfOneKindOfFurniture + 1);
+            int position = randomCount.Next(0, individual.Count);
+            individual[position] = allele;
+        }
+
         public bool checkForAllowabilityInVolume()
         {
             double volume = 0;

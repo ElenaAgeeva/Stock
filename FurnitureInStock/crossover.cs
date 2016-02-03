@@ -8,7 +8,7 @@ namespace FurnitureInStock
 {
     class crossover
     {
-        public List<Individual> cross(List<Individual> ch, double probability)
+        public static List<Individual> cross(List<Individual> ch, double probability)
         {
             List<Individual> newch = new List<Individual>();
             int j = 0;
@@ -21,8 +21,7 @@ namespace FurnitureInStock
                 ch.Remove(ch[index_of_ch]);
                 j++;
             }
-            bool t = true;
-            while ((newch.Count != 0) && (t))
+            while (newch.Count > 1)
             {
                 Random rand = new Random();
                 int index_of_ch1 = rand.Next(0, newch.Count);
@@ -33,13 +32,29 @@ namespace FurnitureInStock
                 }
                 List<Individual> lis = new List<Individual>();
                 lis = steady(newch[index_of_ch1], newch[index_of_ch2]);
+                foreach(Individual individ in lis)
+                {
+                    while (individ.checkForAllowabilityInVolume()||individ.checkForAllowabilityInCost())
+                    {
+                        individ.changeSomethingLittle();
+                    }
+                }
+                if (index_of_ch1>index_of_ch2)
+                {
+                    newch.Remove(newch[index_of_ch1]);
+                    newch.Remove(newch[index_of_ch2]);
+                }
+                else
+                {
+                    newch.Remove(newch[index_of_ch2]);
+                    newch.Remove(newch[index_of_ch1]);
+                }
                 ch.AddRange(lis);
-                if (newch.Count == 1) { t = false; }
             }
             return ch;
         }
 
-        private List<Individual> steady(Individual a, Individual b)
+        private static List<Individual> steady(Individual a, Individual b)
         {
             List<Individual> lis = new List<Individual>();
             Random rand = new Random();

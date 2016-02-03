@@ -12,7 +12,7 @@ namespace FurnitureInStock
 
         private int minCountOfOneKindOfFurniture;
 
-        private List<Genotype> population;
+        //private List<Genotype> population;
 
         public TheEvolutionaryMethod(int _numberOfFurniture, int _minCountOfOneKindOfFurniture)
         {
