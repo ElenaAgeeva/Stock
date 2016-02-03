@@ -33,11 +33,19 @@ namespace FurnitureInStock
                 IntermediaryPopulation=nonDominated.findSetOfDominatedOptions(IntermediaryPopulation);
                 setOfNonDominatedOptions.Add(nonDominated);
             }
+            List<Individual> populationToSelection = new List<Individual>();
             for (int i=0; i<setOfNonDominatedOptions.Count;i++)
             {
                 setOfNonDominatedOptions[i].setRang(setOfNonDominatedOptions.Count - i);
                 setOfNonDominatedOptions[i].AssessmentOfFitness();
+                setOfNonDominatedOptions[i].getNonDominated().ForEach(x => populationToSelection.Add(x));
             }
+            Selection selection = new Selection(initialPopulation.Count);
+            selection.tournament(populationToSelection, 3);
+            crossover crossov = new crossover();
+            crossov.cross(populationToSelection,0.3);
+            mutation mt = new mutation();
+            mt.mutatio(populationToSelection, 0.1);   
         }
     }
 }

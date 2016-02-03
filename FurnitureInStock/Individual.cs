@@ -86,5 +86,20 @@ namespace FurnitureInStock
         {
             assessmentOfFitness = _assessmentOfFitness;
         }
+
+        public double getAssessmentOfFitness()
+        {
+            return assessmentOfFitness;
+        }
+
+        public List<int> getIndividual()
+        {
+            return individual;
+        }
+
+        public void setIndividual(List<int> _individual)
+        {
+            individual=_individual;
+        }
     }
 }
