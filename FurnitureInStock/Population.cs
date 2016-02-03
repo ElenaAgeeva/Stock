@@ -113,6 +113,7 @@ namespace FurnitureInStock
 
         public bool checkOldAndNewCommonNonDominatedOptions()
         {
+            commonNonDominatedOptions=commonNonDominatedOptions.Distinct().ToList();
             List<Individual> intersectOfTwo = commonNonDominatedOld.Intersect(commonNonDominatedOptions.AsEnumerable()).ToList();
             return ((intersectOfTwo.Count.Equals(commonNonDominatedOld.Count)) && (intersectOfTwo.Count.Equals(commonNonDominatedOptions.Count)));
         }
@@ -131,8 +132,9 @@ namespace FurnitureInStock
                 nonImprovement = 0;
                 commonNonDominatedOld.Clear();
                 commonNonDominatedOld.AddRange(commonNonDominatedOptions.AsEnumerable());
+                commonNonDominatedOptions.Clear();
             }
-            return maxNonImprovement < nonImprovement;
+            return maxNonImprovement > nonImprovement;
         }
     }
 }

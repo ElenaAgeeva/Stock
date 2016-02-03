@@ -98,9 +98,16 @@ namespace FurnitureInStock
             assessmentOfFitness = _assessmentOfFitness;
         }
 
-        public double getAssessmentOfFitness()
+        public double AssessmentOfFitness
         {
-            return assessmentOfFitness;
+            get
+            {
+                return assessmentOfFitness;
+            }
+            set
+            {
+                assessmentOfFitness = value;
+            }
         }
 
         public List<int> getIndividual()

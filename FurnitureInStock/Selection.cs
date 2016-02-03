@@ -18,24 +18,29 @@ namespace FurnitureInStock
         public List<Individual> tournament(List<Individual> ch, int count_of_tour)
         {
             List<Individual> newch = new List<Individual>();
+            
             Random rand = new Random();
             for (int j = 0; j < nc; j++)
             {
+                List<Individual> tempch = new List<Individual>();
                 int index1 = rand.Next(0, ch.Count);
                 int index2 = rand.Next(0, ch.Count);
                 int index3 = rand.Next(0, ch.Count);
-                int index4 = rand.Next(0, ch.Count);
+                //int index4 = rand.Next(0, ch.Count);
                 while (index1 == index2)
                 {
                     index2 = rand.Next(0, ch.Count);
                 }
-                if ((count_of_tour == 3) || (count_of_tour == 4))
-                {
-                    while ((index1 == index3) || (index2 == index3))
+                tempch.Add(ch[index1]);
+                tempch.Add(ch[index2]);
+                //if ((count_of_tour == 3) || (count_of_tour == 4))
+                //{
+                while ((index1 == index3) || (index2 == index3))
                     {
                         index3 = rand.Next(0, ch.Count);
                     }
-                }
+                tempch.Add(ch[index3]);
+                /*}
                 else
                 {
                     if (ch[index1].getAssessmentOfFitness() > ch[index2].getAssessmentOfFitness())
@@ -79,26 +84,13 @@ namespace FurnitureInStock
                     }
                 }
                 else
-                {
-                    if (count_of_tour == 3)
+                {*/
+                if (count_of_tour == 3)
                     {
-                        if ((ch[index1].getAssessmentOfFitness() > ch[index2].getAssessmentOfFitness())
-                            && (ch[index1].getAssessmentOfFitness() > ch[index3].getAssessmentOfFitness()))
-                        {
-                            newch.Add(ch[index1]);
-                        }
-                        if ((ch[index2].getAssessmentOfFitness() > ch[index1].getAssessmentOfFitness())
-                            && (ch[index2].getAssessmentOfFitness() > ch[index3].getAssessmentOfFitness()))
-                        {
-                            newch.Add(ch[index2]);
-                        }
-                        if ((ch[index3].getAssessmentOfFitness() > ch[index2].getAssessmentOfFitness())
-                            && (ch[index3].getAssessmentOfFitness() > ch[index1].getAssessmentOfFitness()))
-                        {
-                            newch.Add(ch[index3]);
-                        }
+                    newch.Add(tempch.OrderByDescending(x => x.AssessmentOfFitness).First());
+                    
                     }
-                }
+                //}
             }
             return newch;
         }

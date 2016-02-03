@@ -135,6 +135,7 @@
             this.OtherOutputData.Location = new System.Drawing.Point(481, 301);
             this.OtherOutputData.Multiline = true;
             this.OtherOutputData.Name = "OtherOutputData";
+            this.OtherOutputData.ReadOnly = true;
             this.OtherOutputData.Size = new System.Drawing.Size(434, 158);
             this.OtherOutputData.TabIndex = 10;
             // 

@@ -21,8 +21,7 @@ namespace FurnitureInStock
                 ch.Remove(ch[index_of_ch]);
                 j++;
             }
-            bool t = true;
-            while ((newch.Count != 0) && (t))
+            while (newch.Count != 0)
             {
                 Random rand = new Random();
                 int index_of_ch = rand.Next(0, newch.Count);
