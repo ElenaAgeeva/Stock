@@ -30,8 +30,13 @@ namespace FurnitureInStock
             while ((IntermediaryPopulation).Count!=0)
             {
                 SetOfNonDominatedOptions nonDominated = new SetOfNonDominatedOptions();
-                IntermediaryPopulation=nonDominated.findSetOfDominatedOptions(initialPopulation);
+                IntermediaryPopulation=nonDominated.findSetOfDominatedOptions(IntermediaryPopulation);
                 setOfNonDominatedOptions.Add(nonDominated);
+            }
+            for (int i=0; i<setOfNonDominatedOptions.Count;i++)
+            {
+                setOfNonDominatedOptions[i].setRang(setOfNonDominatedOptions.Count - i);
+                setOfNonDominatedOptions[i].AssessmentOfFitness();
             }
         }
     }

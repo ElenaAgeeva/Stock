@@ -29,9 +29,10 @@ namespace FurnitureInStock
         {
             InitialPopulation = new List<Individual>();
             AddMoreInformation();
+            Random randomCount= new Random();
             for (int i=0; i< countOfPopulation; i++)
             {
-                Individual individual = new Individual(numberOfFurniture, maxCountOfOneKindOfFurniture, additionalInformationAboutIndividual);
+                Individual individual = new Individual(numberOfFurniture, maxCountOfOneKindOfFurniture, additionalInformationAboutIndividual, randomCount);
                 InitialPopulation.Add(individual);
             }
             return InitialPopulation;

@@ -16,11 +16,11 @@ namespace FurnitureInStock
 
         private int maxCountOfOneKindOfFurniture;
 
-        public Genotype(int _numberOfFurniture,int _maxCountOfOneKindOfFurniture)
+        public Genotype(int _numberOfFurniture,int _maxCountOfOneKindOfFurniture, Random _randomCount)
         {
             numberOfFurniture = _numberOfFurniture;
             genotype = new List<int>();
-            randomCount = new Random();
+            randomCount = _randomCount; 
             this.maxCountOfOneKindOfFurniture = _maxCountOfOneKindOfFurniture;
         }
 

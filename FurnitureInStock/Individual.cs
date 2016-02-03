@@ -10,6 +10,10 @@ namespace FurnitureInStock
     {
         private List<int> individual;
 
+        private double maxEuclideanDistance;
+
+        private double assessmentOfFitness;
+
         private Genotype genotypeOfIndividual;
 
         private Phenotype phenotypeOfIndividual;
@@ -24,12 +28,15 @@ namespace FurnitureInStock
 
         private double PCommon;
 
-        public Individual(int _numberOfFurniture, int _maxCountOfOneKindOfFurniture, List<AdditionalInformation> _additionalInformationAboutIndividual)
+        private Random randomCount;
+
+        public Individual(int _numberOfFurniture, int _maxCountOfOneKindOfFurniture, List<AdditionalInformation> _additionalInformationAboutIndividual,Random _randomCount)
         {
             numberOfFurniture = _numberOfFurniture;
             maxCountOfOneKindOfFurniture = _maxCountOfOneKindOfFurniture;
             additionalInformationAboutIndividual = _additionalInformationAboutIndividual;
-            genotypeOfIndividual = new Genotype(numberOfFurniture, maxCountOfOneKindOfFurniture);
+            randomCount = _randomCount;
+            genotypeOfIndividual = new Genotype(numberOfFurniture, maxCountOfOneKindOfFurniture,randomCount);
             individual = genotypeOfIndividual.FormRandomGenotype();
             phenotypeOfIndividual = genotypeOfIndividual.GenotypeToPhenotype();
             CountPCommon();
@@ -63,6 +70,21 @@ namespace FurnitureInStock
         public double getPCommon()
         {
             return PCommon;
+        }
+
+        public void setMaxEuclideanDistance(double _maxEuclideanDistance)
+        {
+            maxEuclideanDistance= _maxEuclideanDistance;
+        }
+
+        public double getMaxEuclideanDistance()
+        {
+            return maxEuclideanDistance;
+        }
+
+        public void setAssessmentOfFitness(double _assessmentOfFitness)
+        {
+            assessmentOfFitness = _assessmentOfFitness;
         }
     }
 }
