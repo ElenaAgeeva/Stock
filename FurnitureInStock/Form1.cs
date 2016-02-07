@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,9 @@ namespace FurnitureInStock
 
         private void SolveWithGeneticAlgorithm_Click(object sender, EventArgs e)
         {
-            Population population = new Population(20, 7, 2,15,1000,100);
+            int numberOfPopulation = Convert.ToInt32(NumberOfIndividuals.Text);
+            int numberOfDifferentKind = Convert.ToInt32(TheNumberOfDifferentTypesOfFurniture.Text);
+            Population population = new Population(numberOfPopulation, numberOfDifferentKind, 2,15,1000,100);
             population.FormInitialPopulation();
             List<Individual> initialPopulation = population.getInitialPopulation();
             initialPopulation = population.FindFitnessAssessment(initialPopulation);
@@ -51,14 +54,15 @@ namespace FurnitureInStock
             MainOutputData.Rows.Add();
             MainOutputData.Rows[0].Cells[0].Value = population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon().ToString();
             MainOutputData.Rows[0].Cells[1].Value = population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon().ToString();
-
+            double probabilityOfMutation = Convert.ToDouble(TheProbabilityOfMutation.Text, CultureInfo.InvariantCulture);
+            double probabilityOfCrossover = Convert.ToDouble(TheProbabilityOfCrossing.Text, CultureInfo.InvariantCulture);
             int iteration = 1;
             do
             {
                 Selection selection = new Selection(initialPopulation.Count);
                 initialPopulation=selection.tournament(initialPopulation, 3);
-                initialPopulation=crossover.cross(initialPopulation, 0.3);
-                initialPopulation=mutation.mutatio(initialPopulation, 0.7);
+                initialPopulation=crossover.cross(initialPopulation, probabilityOfCrossover);
+                initialPopulation=mutation.mutatio(initialPopulation, probabilityOfMutation);
                 initialPopulation = population.FindFitnessAssessment(initialPopulation);
                 OtherOutputData.Text += "S = " + population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon().ToString() + "\r\n";
                 OtherOutputData.Text += "P = " + population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon().ToString() + "\r\n";

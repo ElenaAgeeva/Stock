@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,10 +42,10 @@
             this.TheProbabilityOfMutation = new System.Windows.Forms.TextBox();
             this.TheProbabilityOfCrossing = new System.Windows.Forms.TextBox();
             this.MainOutputData = new System.Windows.Forms.DataGridView();
-            this.OtherOutputData = new System.Windows.Forms.TextBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OtherOutputData = new System.Windows.Forms.TextBox();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.MainOutputData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -102,6 +102,7 @@
             this.TheNumberOfDifferentTypesOfFurniture.Name = "TheNumberOfDifferentTypesOfFurniture";
             this.TheNumberOfDifferentTypesOfFurniture.Size = new System.Drawing.Size(100, 22);
             this.TheNumberOfDifferentTypesOfFurniture.TabIndex = 5;
+            this.TheNumberOfDifferentTypesOfFurniture.Text = "7";
             // 
             // NumberOfIndividuals
             // 
@@ -109,6 +110,7 @@
             this.NumberOfIndividuals.Name = "NumberOfIndividuals";
             this.NumberOfIndividuals.Size = new System.Drawing.Size(100, 22);
             this.NumberOfIndividuals.TabIndex = 6;
+            this.NumberOfIndividuals.Text = "400";
             // 
             // TheProbabilityOfMutation
             // 
@@ -116,6 +118,7 @@
             this.TheProbabilityOfMutation.Name = "TheProbabilityOfMutation";
             this.TheProbabilityOfMutation.Size = new System.Drawing.Size(100, 22);
             this.TheProbabilityOfMutation.TabIndex = 7;
+            this.TheProbabilityOfMutation.Text = "0.7";
             // 
             // TheProbabilityOfCrossing
             // 
@@ -123,6 +126,7 @@
             this.TheProbabilityOfCrossing.Name = "TheProbabilityOfCrossing";
             this.TheProbabilityOfCrossing.Size = new System.Drawing.Size(100, 22);
             this.TheProbabilityOfCrossing.TabIndex = 8;
+            this.TheProbabilityOfCrossing.Text = "0.3";
             // 
             // MainOutputData
             // 
@@ -136,36 +140,6 @@
             this.MainOutputData.Size = new System.Drawing.Size(374, 150);
             this.MainOutputData.TabIndex = 9;
             // 
-            // OtherOutputData
-            // 
-            this.OtherOutputData.Location = new System.Drawing.Point(481, 301);
-            this.OtherOutputData.Multiline = true;
-            this.OtherOutputData.Name = "OtherOutputData";
-            this.OtherOutputData.ReadOnly = true;
-            this.OtherOutputData.Size = new System.Drawing.Size(434, 158);
-            this.OtherOutputData.TabIndex = 10;
-            // 
-            // chart1
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(481, 28);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
-            series2.Legend = "Legend1";
-            series2.Name = "Ген. Алг";
-            series2.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(434, 249);
-            this.chart1.TabIndex = 11;
-            this.chart1.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Критериальное пространство";
-            this.chart1.Titles.Add(title2);
-            // 
             // Column2
             // 
             this.Column2.HeaderText = "Si";
@@ -177,6 +151,36 @@
             this.Column3.HeaderText = "Pi";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            // 
+            // OtherOutputData
+            // 
+            this.OtherOutputData.Location = new System.Drawing.Point(481, 301);
+            this.OtherOutputData.Multiline = true;
+            this.OtherOutputData.Name = "OtherOutputData";
+            this.OtherOutputData.ReadOnly = true;
+            this.OtherOutputData.Size = new System.Drawing.Size(434, 158);
+            this.OtherOutputData.TabIndex = 10;
+            // 
+            // chart1
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
+            this.chart1.Location = new System.Drawing.Point(481, 28);
+            this.chart1.Name = "chart1";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
+            series4.Legend = "Legend1";
+            series4.Name = "Ген. Алг";
+            series4.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series4);
+            this.chart1.Size = new System.Drawing.Size(434, 249);
+            this.chart1.TabIndex = 11;
+            this.chart1.Text = "chart1";
+            title4.Name = "Title1";
+            title4.Text = "Критериальное пространство";
+            this.chart1.Titles.Add(title4);
             // 
             // Form1
             // 
