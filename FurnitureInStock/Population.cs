@@ -30,9 +30,29 @@ namespace FurnitureInStock
 
         private int nonImprovement;
 
-        public Population(int _countOfPopulation, int _numberOfFurniture, int _maxCountOfOneKindOfFurniture,double _maxVolume,
-            double _maxCost,int _maxNonImprovement)
+        private int nonImprovementinTheBestIndividual;
+
+        private int maxNonImprovementinTheBestIndividual;
+
+        private Individual theBestIndividual;
+
+        public Individual maxOfMaxIndividual
         {
+            get
+            {
+                return maxOfMaxIndividual;
+            }
+            set
+            {
+                maxOfMaxIndividual = value;
+            }
+        }
+
+        public Population(int _countOfPopulation, int _numberOfFurniture, int _maxCountOfOneKindOfFurniture,double _maxVolume,
+            double _maxCost,int _maxNonImprovement,int _maxNonImprovementinTheBestIndividual)
+        {
+            theBestIndividual = FormRandomIndividual();
+            nonImprovementinTheBestIndividual = 0;
             countOfPopulation = _countOfPopulation;
             numberOfFurniture = _numberOfFurniture;
             maxCountOfOneKindOfFurniture = _maxCountOfOneKindOfFurniture;
@@ -40,6 +60,27 @@ namespace FurnitureInStock
             maxCost = _maxCost;
             maxNonImprovement = _maxNonImprovement;
             commonNonDominatedOld = new List<Individual>();
+            maxNonImprovementinTheBestIndividual = _maxNonImprovementinTheBestIndividual;
+        }
+
+        public List<Individual> getInitialPopulation()
+        {
+            return InitialPopulation;
+        }
+
+        public void setInitialPopulation(List<Individual> _InitialPopulation)
+        {
+            InitialPopulation = _InitialPopulation;
+        }
+
+        public Individual FormRandomIndividual()
+        {
+            AddMoreInformation();
+            Random randomCount = new Random();
+                Individual individual = new Individual(numberOfFurniture, maxCountOfOneKindOfFurniture, additionalInformationAboutIndividual,
+                    randomCount, maxVolume, maxCost);
+            
+            return individual;
         }
 
         public List<Individual> FormInitialPopulation()
@@ -73,11 +114,6 @@ namespace FurnitureInStock
                 System.Console.WriteLine(line);
                 counter++;
             }
-        }
-
-        public List<Individual> getInitialPopulation()
-        {
-            return InitialPopulation;
         }
 
         public List<Individual> FindFitnessAssessment(List<Individual> withoutFitnessAssessment)
@@ -125,6 +161,15 @@ namespace FurnitureInStock
 
         public bool CheckForNoImprovment()
         {
+            InitialPopulation.OrderByDescending(x => x.AssessmentOfFitness);
+            if (InitialPopulation.Count!=0)
+            {
+                if (InitialPopulation.First().Equals(InitialPopulation[InitialPopulation.Count - 1]))
+                {
+                    maxOfMaxIndividual = InitialPopulation.First();
+                    return false;
+                }
+            }
             if (checkOldAndNewCommonNonDominatedOptions())
                 nonImprovement++;
             else
@@ -135,6 +180,18 @@ namespace FurnitureInStock
                 commonNonDominatedOptions.Clear();
             }
             return maxNonImprovement > nonImprovement;
+        }
+
+        public bool CheckForTheBestIndividual(Individual nowIndividual)
+        {
+            if (theBestIndividual.AssessmentOfFitness > nowIndividual.AssessmentOfFitness)
+                nonImprovementinTheBestIndividual++;
+            else
+            {
+                theBestIndividual = nowIndividual;
+                nonImprovementinTheBestIndividual = 0;
+            }
+            return maxNonImprovementinTheBestIndividual > nonImprovementinTheBestIndividual;
         }
     }
 }

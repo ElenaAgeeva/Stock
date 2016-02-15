@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -110,7 +110,7 @@
             this.NumberOfIndividuals.Name = "NumberOfIndividuals";
             this.NumberOfIndividuals.Size = new System.Drawing.Size(100, 22);
             this.NumberOfIndividuals.TabIndex = 6;
-            this.NumberOfIndividuals.Text = "400";
+            this.NumberOfIndividuals.Text = "70";
             // 
             // TheProbabilityOfMutation
             // 
@@ -118,7 +118,7 @@
             this.TheProbabilityOfMutation.Name = "TheProbabilityOfMutation";
             this.TheProbabilityOfMutation.Size = new System.Drawing.Size(100, 22);
             this.TheProbabilityOfMutation.TabIndex = 7;
-            this.TheProbabilityOfMutation.Text = "0.7";
+            this.TheProbabilityOfMutation.Text = "0.3";
             // 
             // TheProbabilityOfCrossing
             // 
@@ -126,7 +126,7 @@
             this.TheProbabilityOfCrossing.Name = "TheProbabilityOfCrossing";
             this.TheProbabilityOfCrossing.Size = new System.Drawing.Size(100, 22);
             this.TheProbabilityOfCrossing.TabIndex = 8;
-            this.TheProbabilityOfCrossing.Text = "0.3";
+            this.TheProbabilityOfCrossing.Text = "0.7";
             // 
             // MainOutputData
             // 
@@ -163,24 +163,24 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(481, 28);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
-            series4.Legend = "Legend1";
-            series4.Name = "Ген. Алг";
-            series4.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastPoint;
+            series1.Legend = "Legend1";
+            series1.Name = "Ген. Алг";
+            series1.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(434, 249);
             this.chart1.TabIndex = 11;
             this.chart1.Text = "chart1";
-            title4.Name = "Title1";
-            title4.Text = "Критериальное пространство";
-            this.chart1.Titles.Add(title4);
+            title1.Name = "Title1";
+            title1.Text = "Критериальное пространство";
+            this.chart1.Titles.Add(title1);
             // 
             // Form1
             // 
