@@ -42,10 +42,12 @@ namespace FurnitureInStock
         {
             int numberOfPopulation = Convert.ToInt32(NumberOfIndividuals.Text);
             int numberOfDifferentKind = Convert.ToInt32(TheNumberOfDifferentTypesOfFurniture.Text);
-            Population population = new Population(numberOfPopulation, numberOfDifferentKind, 2, 15, 1000, 30,50);
-            
+            Population population = new Population(numberOfPopulation, numberOfDifferentKind, 2, 15, 1000, 10,50);//было 30 вместо 10
+            int iteratoinInPopulation = 0;
+            int iteratoinInPopulationForDataGridView = 0;
             do
             {
+                OtherOutputData.Items.Add("========================= перезапуск " + iteratoinInPopulation.ToString() + " \r\n");
                 population.FormInitialPopulation();
                 List<Individual> initialPopulation = population.getInitialPopulation();
                 initialPopulation = population.FindFitnessAssessment(initialPopulation);
@@ -93,23 +95,27 @@ namespace FurnitureInStock
                             sw.WriteLine(string.Join(", ", indiv.getIndividual()));
                         }
                         initialPopulation = population.FindFitnessAssessment(initialPopulation);
-                        OtherOutputData.Text += "S = " + population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon().ToString() + "\r\n";
-                        OtherOutputData.Text += "P = " + population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon().ToString() + "\r\n";
-                        OtherOutputData.Text += "X = " + string.Join(", ", population.getCommonNonDominatedOptions().FirstOrDefault().getIndividual()) + "\r\n";
-                        OtherOutputData.Text += "========================= " + iteration.ToString() + " \r\n";
+                        OtherOutputData.Items.Add("S = " + population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon().ToString() + "\r\n");
+                        OtherOutputData.Items.Add("P = " + population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon().ToString() + "\r\n");
+                        OtherOutputData.Items.Add("X = " + string.Join(", ", population.getCommonNonDominatedOptions().FirstOrDefault().getIndividual()) + "\r\n");
+                        OtherOutputData.Items.Add("========================= " + iteration.ToString() + " \r\n");
                         chart1.Series[0].Points.AddXY(population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon(),
                         population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon());
                         MainOutputData.Rows.Add();
-                        MainOutputData.Rows[iteration].Cells[0].Value = population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon().ToString();
-                        MainOutputData.Rows[iteration].Cells[1].Value = population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon().ToString();
+                        MainOutputData.Rows[iteratoinInPopulation+iteration].Cells[0].Value = population.getCommonNonDominatedOptions().FirstOrDefault().getSCommon().ToString();
+                        MainOutputData.Rows[iteratoinInPopulation+iteration].Cells[1].Value = population.getCommonNonDominatedOptions().FirstOrDefault().getPCommon().ToString();
                         iteration++;
                         i++;
                     }
                     while (population.CheckForNoImprovment());
                 }
+                iteratoinInPopulationForDataGridView+=iteration-1;
+                iteratoinInPopulation += 1;
             }
-            while (population.CheckForTheBestIndividual(population.getInitialPopulation().First()));
-
-            }
+            while (population.CheckForTheBestIndividual(population.getInitialPopulation().OrderByDescending(x=>x.AssessmentOfFitness).First()));
+            OtherOutputData.Items.Add("S = " + population.theBestIndividual.getSCommon().ToString() + "\r\n");
+            OtherOutputData.Items.Add("P = " + population.theBestIndividual.getPCommon().ToString() + "\r\n");
+            OtherOutputData.Items.Add("X = " + string.Join(", ", population.theBestIndividual.getIndividual()) + "\r\n");
+        }
     }
 }

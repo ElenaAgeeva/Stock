@@ -34,7 +34,7 @@ namespace FurnitureInStock
 
         private int maxNonImprovementinTheBestIndividual;
 
-        private Individual theBestIndividual;
+        public Individual theBestIndividual;
 
         public Individual maxOfMaxIndividual
         {
@@ -114,6 +114,7 @@ namespace FurnitureInStock
                 System.Console.WriteLine(line);
                 counter++;
             }
+            file.Close();
         }
 
         public List<Individual> FindFitnessAssessment(List<Individual> withoutFitnessAssessment)
@@ -184,12 +185,14 @@ namespace FurnitureInStock
 
         public bool CheckForTheBestIndividual(Individual nowIndividual)
         {
-            if (theBestIndividual.AssessmentOfFitness > nowIndividual.AssessmentOfFitness)
-                nonImprovementinTheBestIndividual++;
-            else
+            if (theBestIndividual.AssessmentOfFitness < nowIndividual.AssessmentOfFitness)
             {
                 theBestIndividual = nowIndividual;
                 nonImprovementinTheBestIndividual = 0;
+            }
+            else
+            {
+                nonImprovementinTheBestIndividual++;
             }
             return maxNonImprovementinTheBestIndividual > nonImprovementinTheBestIndividual;
         }

@@ -44,8 +44,8 @@
             this.MainOutputData = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OtherOutputData = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.OtherOutputData = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.MainOutputData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -152,15 +152,6 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // OtherOutputData
-            // 
-            this.OtherOutputData.Location = new System.Drawing.Point(481, 301);
-            this.OtherOutputData.Multiline = true;
-            this.OtherOutputData.Name = "OtherOutputData";
-            this.OtherOutputData.ReadOnly = true;
-            this.OtherOutputData.Size = new System.Drawing.Size(434, 158);
-            this.OtherOutputData.TabIndex = 10;
-            // 
             // chart1
             // 
             chartArea1.Name = "ChartArea1";
@@ -182,13 +173,22 @@
             title1.Text = "Критериальное пространство";
             this.chart1.Titles.Add(title1);
             // 
+            // OtherOutputData
+            // 
+            this.OtherOutputData.FormattingEnabled = true;
+            this.OtherOutputData.ItemHeight = 16;
+            this.OtherOutputData.Location = new System.Drawing.Point(481, 301);
+            this.OtherOutputData.Name = "OtherOutputData";
+            this.OtherOutputData.Size = new System.Drawing.Size(434, 148);
+            this.OtherOutputData.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 515);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.OtherOutputData);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.MainOutputData);
             this.Controls.Add(this.TheProbabilityOfCrossing);
             this.Controls.Add(this.TheProbabilityOfMutation);
@@ -220,10 +220,10 @@
         private System.Windows.Forms.TextBox TheProbabilityOfMutation;
         private System.Windows.Forms.TextBox TheProbabilityOfCrossing;
         private System.Windows.Forms.DataGridView MainOutputData;
-        private System.Windows.Forms.TextBox OtherOutputData;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.ListBox OtherOutputData;
     }
 }
 
