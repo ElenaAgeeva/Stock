@@ -1,0 +1,7 @@
+C:\Projects\Stock\FurnitureInStock\bin\Debug\FurnitureInStock.exe
+C:\Projects\Stock\FurnitureInStock\bin\Debug\FurnitureInStock.pdb
+C:\Projects\Stock\FurnitureInStock\obj\Debug\FurnitureInStock.Form1.resources
+C:\Projects\Stock\FurnitureInStock\obj\Debug\FurnitureInStock.Properties.Resources.resources
+C:\Projects\Stock\FurnitureInStock\obj\Debug\FurnitureInStock.csproj.GenerateResource.Cache
+C:\Projects\Stock\FurnitureInStock\obj\Debug\FurnitureInStock.exe
+C:\Projects\Stock\FurnitureInStock\obj\Debug\FurnitureInStock.pdb
